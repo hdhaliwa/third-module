@@ -1,0 +1,129 @@
+1. In your own words, explain what clean code is and why it is important.
+>Clean code is important for a number of reasons, but the main scope is understanding the code you're reading. Even if it's yours, you might run into some old code and have no idea what it does if it is not clean enough. Also, when working in teams, people might have another way or path towards the same answer and if you have a clean code it is easier for them to understand it and work with it.
+
+2. Read this article about Toyota and their use of bad code. Although you may not yet understand all of the topics discussed, think about another commonly used object that relies on computers and explain what would happen if the code was not created to an acceptable standard.
+Airplanes rely on computers, and if their algorithms and codes are not done correctly, there are many things that might go wrong. Radars might not pick up other objects or airplanes, resulting in accidents. Monitoring stuff like altitude, speed, direction, tilt, might not be accurate and cause accidents.
+
+3. FUNCTION do(x, y)               // Creating a new function
+ IF y = "F" THEN               // Check if y is equal "F"
+ SET z to (x−32) * (5/9)       // Formula to convert degrees fahrenheit to celsius
+ PRINT z                       // Print result
+ ELSE IF y = "C" THEN          // If y not equal to "F", check if equal to "C"
+ SET z to x * 1.8000 + 32.00   // Formula to convert degrees celsius to fahrenheit
+ PRINT z                       // Print result
+ END IF
+END FUNCTION
+
+in my opinion, it is not clean enough. Variables are not named, which makes it confusing if you don't know the content. This is cleaner.
+
+FUNCTION convertDegrees(degrees, scale)               // Creating a new function
+ IF scale = "F" THEN               // Check if y is equal "F"
+ SET newDegrees to ((degrees−32) * (5/9))      // Formula to convert degrees fahrenheit to celsius
+ PRINT newDegrees                       // Print result
+ ELSE IF scale = "C" THEN          // If y not equal to "F", check if equal to "C"
+ SET newDegrees to ((degrees * 1.8000) + 32.00)   // Formula to convert degrees celsius to fahrenheit
+ PRINT newDegrees                       // Print result
+ END IF
+END FUNCTION
+
+4. It is a well written code, since everything is labeled and named properly.
+
+5a. 
+FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
+   var totalDue = subTotal * discountRate + (subTotal * tax);
+   var changeDue = amount - totalDue
+   
+   PRINT "Your total due is: " + totalDue
+
+   IF paymentType = 'CASH' THEN
+       CALL getPayment RETURNING amount
+       PRINT "Change due: " + changeDue
+   ELSE IF paymentType = 'CREDIT CARD' THEN
+       CALL getPayment RETURNING amount
+       PRINT "Your credit card has been charged: " + totalDue
+   END IF
+END FUNCTION
+
+5b.
+
+FUNCTION checkoutBook(book,guest)
+    IF guest.accountActive THEN
+        IF NOT(guest.hasOverdueBooks) AND (guest.outstandingFees === 0) THEN
+            APPEND book to guest.Books
+            SET book.status to "Checked Out"
+            PRINT "Your books have been issued."
+        END IF
+    END IF
+
+    ELSE
+        PRINT "Unable to check out book."
+    END FUNCTION
+
+
+5c.
+CLASS Transactions
+    FUNCTION displayBalance
+        PRINT balance
+    END FUNCTION
+    FUNCTION deposit(amount)
+        SET balance to balance + amount
+    END FUNCTION
+    FUNCTION withdraw(amount)
+     IF balance > amount THEN
+       SET balance to balance - amount
+     END
+    END FUNCTION
+
+CLASS Offers
+    FUNCTION creditCardOffer
+        IF NOT(customer.hasCreditCard) THEN
+            CALL offerCreditCard
+        END
+    END FUNCTION
+
+    FUNCTION checkStatus
+        IF NOT(customer.hasCheckingAccount) THEN
+            CALL offerCheckingAccount
+        END
+    END FUNCTION
+
+END
+
+6.
+var numArray = [1,2,3,4,5];
+
+function squareRoot() {
+    var sum = 0;
+    var sqrt = 0;
+    for(i=0; i < numArray.length; i++) {
+        sum = sum + numArray[i];
+        sqrt = Math.sqrt(sum);
+    }
+    if (sqrt%1 === 0){
+      return console.log(sqrt)
+    } else
+      return console.log(sum)
+  
+}
+
+squareRoot();
+
+7.
+
+
+function searchDuplicates() {
+    var numArray = [3,1,6,4,12,2,3,4,5];
+    numArray.sort(function(a,b){return a-b});
+    for(i=0; i < numArray.length; i++){
+        if(numArray[i] === numArray[i+1]){
+            console.log('true')
+            return true
+        } else {
+            console.log('false')
+            return false
+        }
+    }
+}
+
+searchDuplicates();
+
