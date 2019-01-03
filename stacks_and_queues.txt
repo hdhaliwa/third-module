@@ -1,0 +1,49 @@
+1. Stack uses LIFO, queue uses FIFO
+
+2. They are both used to manage data, but in different orders.
+
+3. I would use LIFO for both, since the last thing you did(or undid) would be the first thing you'd like to undo(or redo).
+
+____
+1. 
+
+var word = 'Bloc!'
+
+function reverse(original) {
+    var newStack = []
+    var temp = original.length-1;
+    for(i=0; i < original.length; i++)
+    newStack.push(original.charAt(temp-i))
+}
+
+reverse(original);
+
+2.
+
+var word = "Bloc!"
+
+function mirror(original) {
+    var newStack = [];
+    var tempStack = original.split('');
+    var lengthStack = tempStack.length;
+    for (i=0; i < lengthStack; i++){
+        var next = tempStack.pop();
+        newStack.push(next);
+    }
+}
+
+mirror(word);
+
+3.
+var queue = ['hi']
+
+function queue(element) {
+    queue.push(element)
+}
+
+function dequeue() {
+    var temp = queue[0];
+    var tempIndex = queue.indexOf(temp)
+    queue.splice(tempIndex,1)
+}
+
