@@ -1,0 +1,23 @@
+a) var parkLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+
+b) var newPerson;
+
+newPerson = "Mary";
+
+parkLine.append(newPerson);
+
+c) parkLine.indexOf('Josh')
+d) parkLine.indexOf('Emily')
+    -1
+
+e) var ava = parkLine.indexOf('Ava') 
+
+parkLine.splice(ava,0,'Melissa')
+
+f) var patrick = parkLine.indexOf('Patrick')
+
+parkLine.splice(patrick,1)
+
+2. Real-time top 10 lists ordered by likes
+
+3. You can enable certain variables which will change the object's properties and allow them to be sorted and filtered.
