@@ -1,3 +1,58 @@
 1. pros are less memory used, wider expandability range, cons are no indexing
 2. mutual friends in facebook!
+_______________________________________________
 
+1. I believe the error is
+
+..
+ELSE
+
+Set current to head
+
+Set current.next to node
+..
+
+It should be
+ 
+..
+ELSE
+
+Set current.next to head
+Set head to node
+
+..
+
+function LinkedList() {
+    this.head = null;
+    this.tail = null;
+}
+
+function Node(value,next){
+    this.value = value;
+    this.next = next;
+}
+
+function push(value) {
+    var newNode = new Node(value,next);
+    if (!this.head) {
+        this.head = newNode;
+    } else {
+        this.next = this.head;
+        this.head = newNode;
+    }
+}
+
+2.
+
+var linkedList;
+
+for (i = 0; i < linkedList.length; i++) {
+    let temp = linkedList[i];
+    let tempIndex = linkedList.indexOf(linkedList[i])
+    for (j = 0; j < linkedList.length; j++) {
+        let tempJndex = linkedList.indexOf(linkedList[j])
+        if ((linkedList[i] === linkedList[j]) && (tempIndex === tempJndex))  {
+            //How do I delete a node if its not the head or tail?
+        }
+    }
+}
