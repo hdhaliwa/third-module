@@ -22,37 +22,97 @@ Set head to node
 
 ..
 
-function LinkedList() {
-    this.head = null;
-    this.tail = null;
-}
-
-function Node(value,next){
-    this.value = value;
-    this.next = next;
-}
-
-function push(value) {
-    var newNode = new Node(value,next);
-    if (!this.head) {
-        this.head = newNode;
-    } else {
-        this.next = this.head;
-        this.head = newNode;
+class Node {
+    constructor(value,next,prev){
+        this.value = value;
+        this.next = next;
+        this.prev = prev;
     }
 }
 
-2.
+class LinkedList() {
+    constructor(){
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
 
-var linkedList;
+    push(value) {
+        let newNode = new Node(value);
+        let current;
 
-for (i = 0; i < linkedList.length; i++) {
-    let temp = linkedList[i];
-    let tempIndex = linkedList.indexOf(linkedList[i])
-    for (j = 0; j < linkedList.length; j++) {
-        let tempJndex = linkedList.indexOf(linkedList[j])
-        if ((linkedList[i] === linkedList[j]) && (tempIndex === tempJndex))  {
-            //How do I delete a node if its not the head or tail?
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+            this.length = this.length + 1;
+            return newNode;
+        } 
+
+        current = this.head;
+        while(current.next) {
+            current = current.next;
+        }
+
+        current.next = newNode;
+        this.tail = newNode;
+        this.length = this.length + 1;
+        return newNode;
+    }
+
+    removeduplicate() {
+        let current = this.head;
+        let next;
+        let nodes = {};
+
+        while(current){
+            let data = next.value;
+            if(nodes[data]){
+                current = current.next;
+            } else {
+                nodes[data] = current;
+                current = next;
+            }
         }
     }
+
+    reverse() {
+        if (!this.head.next) {
+            return;
+        }
+
+        else if (this.length == 2) {
+            let current = this.head;
+            let temp = current.next;
+            current = temp;
+            current.next = this.head;
+        }
+        let prevItem = this.head;
+        let currentItem = prevItem.next;
+        let tailItem = this.head;
+
+        while (current.next) {
+            let nextItem = currentItem.next;
+            currentItem.next = prevItem;
+            tailItem.next = null;
+
+            let temp = currentItem;
+            currentItem = nextItem;
+            prevItem = temp;
+        }
+        this.head = currentItem;
+        currentItem.next = prevItem;
+        this.tail = tailItem;
+        return
+    }
 }
+
+const listTest = new LinkedList();
+
+listTest.addNode("a");
+listTest.addNode("b");
+listTest.addNode("c");
+listTest.addNode("d");
+listTest.addNode("f");
+
+listTest.reverse();
+console.log(listTest);
