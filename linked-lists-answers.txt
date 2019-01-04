@@ -1,0 +1,3 @@
+1. pros are less memory used, wider expandability range, cons are no indexing
+2. mutual friends in facebook!
+

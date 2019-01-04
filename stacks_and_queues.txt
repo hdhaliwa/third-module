@@ -12,38 +12,57 @@ var word = 'Bloc!'
 function reverse(original) {
     var newStack = []
     var temp = original.length-1;
-    for(i=0; i < original.length; i++)
-    newStack.push(original.charAt(temp-i))
+    for(i=0; i < original.length; i++){
+      newStack.push(original.charAt(temp-i))
+    }
+    var finalStack = newStack.join('');
+    return finalStack;
 }
 
-reverse(original);
+console.log(word + ' reversed is ' + reverse(word));
 
 2.
 
-var word = "Bloc!"
+var word = 'Bloc!'
 
-function mirror(original) {
-    var newStack = [];
-    var tempStack = original.split('');
-    var lengthStack = tempStack.length;
-    for (i=0; i < lengthStack; i++){
-        var next = tempStack.pop();
-        newStack.push(next);
+class Pop {
+    constructor(){
+
+    }
+
+    function pop() {
+        var array = this;
+        var arrayTemp = array[array.length];
+        var arrayLength = array.length-1;
+        var newArray = [];
+
+        for (i=0; i < arrayLength; i++){
+            newArray.push(this[i]);
+        }
+        newArray.join('');
+        return newArray
+
     }
 }
 
-mirror(word);
-
 3.
-var queue = ['hi']
 
-function queue(element) {
-    queue.push(element)
+class Queue {
+    constructor(){
+        jobQueue = [];
+    }
+
+    enqueue(element) {
+        jobQueue.push(element)
+    }
+
+    dequeue() {
+        var temp = jobQueue[0];
+        var tempIndex = jobQueue.indexOf(temp);
+        jobQueue.splice(tempIndex,1);
+        return temp;
+    }
+
 }
 
-function dequeue() {
-    var temp = queue[0];
-    var tempIndex = queue.indexOf(temp)
-    queue.splice(tempIndex,1)
-}
 
